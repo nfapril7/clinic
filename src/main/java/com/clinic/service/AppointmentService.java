@@ -18,12 +18,12 @@ public class AppointmentService {
 	@Autowired
 	AppointmentRepository appointmentRepository;
 	
-	public MessageOutput save(AppointmentModel appointmentModel) {
-		MessageOutput mo = new MessageOutput();
+	public Appointment save(AppointmentModel appointmentModel) {
+		Appointment appointment = null;
 		try {
-			Appointment appointment = new Appointment();
+			appointment = new Appointment();
 			appointment.setApprovedBy(appointmentModel.getApprovedBy());
-			appointment.setApprrove(0);
+			appointment.setApprove(0);
 			appointment.setDateAppointment(appointmentModel.getDateAppointment());
 			appointment.setDescription(appointmentModel.getDescription());
 			appointment.setIdNutritionist(appointmentModel.getIdNutritionist());
@@ -31,36 +31,30 @@ public class AppointmentService {
 			if(appointment==null) {
 				throw new CustomException("Data can't be null");
 			}
-			appointmentRepository.save(appointment);
-			mo.setData(appointment);
-			mo.setMessage("Save data successfully");
-			mo.setStatus(Constant.SUCCESS);			
+			appointmentRepository.save(appointment);		
 		}catch(Exception ex) {
-			//LOG+ex
-			mo.setData("Data not found");
-			mo.setMessage("Save data failed");
-			mo.setStatus(Constant.ERROR);	
+			//LOG+ex	
 		}
-		return mo;		
+		return appointment;		
 	}
 	
-	public MessageOutput findAll(){
-		MessageOutput mo = new MessageOutput();
-		try {
+	public List<Appointment> findAll(){
+//		MessageOutput mo = new MessageOutput();
+//		try {
 			List<Appointment> appointments = appointmentRepository.findAll();
-			if(appointments.isEmpty()) {
-				throw new CustomException("Data not found");
-			}
-			mo.setData(appointments);
-			mo.setStatus(Constant.SUCCESS);
-			mo.setMessage("Find data succesfully");
-		}catch(Exception ex) {
-			//LOG
-			mo.setData("Data not exist");
-			mo.setStatus(Constant.ERROR);
-			mo.setMessage("Find data failed");
-		}
-		return mo;
+//			if(appointments.isEmpty()) {
+//				throw new CustomException("Data not found");
+//			}
+//			mo.setData(appointments);
+//			mo.setStatus(Constant.SUCCESS);
+//			mo.setMessage("Find data succesfully");
+//		}catch(Exception ex) {
+//			//LOG
+//			mo.setData("Data not exist");
+//			mo.setStatus(Constant.ERROR);
+//			mo.setMessage("Find data failed");
+//		}
+		return appointments;
 	}
 	
 }
