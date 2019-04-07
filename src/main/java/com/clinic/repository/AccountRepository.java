@@ -1,9 +1,8 @@
 package com.clinic.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-
 import com.clinic.domain.Account;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
-public interface AccountRepository extends MongoRepository<Account, String>{
+public interface AccountRepository extends ReactiveMongoRepository<Account, String>{
 
 }

@@ -1,36 +1,39 @@
 package com.clinic.domain;
 
-import java.util.Date;
-
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Document(collection = "APPOINTMENT")
+@Document(collection="PATIENT")
 @Data
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode (callSuper = false)
-public class Appointment {
+public class Patient {
 
-	@Field(value="id")
 	@Id
-	public String idAppointment;
-        @NotNull
-	public Date dateAppointment;
-	public String description;
-        @NotNull
-	public String idUser;
-        @NotNull
-	public String idNutritionist;
-	public String approvedBy;
-	public int approve;
+	@Field(value="id")
+	public String docId;
+	
+	public String accountId;
+	
+	public String branch;
+	
+	public int age;
+	
+	public double weight; 
+	
+	public int height;
+	
+	public String disease [];
+	
+	public String banned [];
 
 }

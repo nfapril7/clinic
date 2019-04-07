@@ -3,34 +3,33 @@ package com.clinic.domain;
 import java.util.Date;
 
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Document(collection = "APPOINTMENT")
+@Document(collection="SCHEDULE")
 @Data
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode (callSuper = false)
-public class Appointment {
-
-	@Field(value="id")
+public class Schedule{
+	
 	@Id
-	public String idAppointment;
-        @NotNull
-	public Date dateAppointment;
-	public String description;
-        @NotNull
-	public String idUser;
-        @NotNull
-	public String idNutritionist;
-	public String approvedBy;
-	public int approve;
-
+	@Field(value="id")
+	public String scheduleId;
+	
+	public Date dateSchedule;	
+	public String time;	
+	public String nutritionistId;
+	public String patientId;
+	public String appointmentId;
+	public int isActive;
+	
 }
